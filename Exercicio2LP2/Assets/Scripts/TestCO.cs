@@ -15,7 +15,15 @@ public class TestCO : MonoBehaviour
     private Coroutine printHello;
 
 
-
+    private IEnumerator BeingPressed()
+    {
+        WaitForPress wfp = new WaitForPress();
+        while(true)
+        {
+            yield return wfp;
+            Debug.Log("Im pressing stuff");
+        }
+    }
     private IEnumerator PrintHello(float secs)
     {
         WaitForSeconds wts = new WaitForSeconds(secs);
@@ -45,6 +53,7 @@ public class TestCO : MonoBehaviour
     {
         printHello = StartCoroutine(PrintHello(seconds));
         StartCoroutine(CountUp(secondsUp,secsStopHello));
+        StartCoroutine(BeingPressed());
     }
 
     // Update is called once per frame
@@ -53,3 +62,5 @@ public class TestCO : MonoBehaviour
         
     }
 }
+
+
